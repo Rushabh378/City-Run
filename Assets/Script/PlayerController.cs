@@ -3,28 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController), typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
-    private Rigidbody rigidBody;
+    private float yVelocity = 0;
+    private bool onGround = true;
     [SerializeField] private Animator animator;
+    [SerializeField] private BoxCollider groundChecker;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 1f;
+    [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float gravity = 1f;
 
     public void Start()
     {
         controller = GetComponent<CharacterController>();
-        rigidBody = GetComponent<Rigidbody>();
     }
     public void Update()
     {
         Move();
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        onGround = true;
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        onGround = false;
+    }
+
     private void Move()
     {
+       
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        if (onGround)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                yVelocity = jumpForce;
+            } 
+        }
+        else
+        {
+            yVelocity -= gravity;
+        }
+
+        move.y = yVelocity;
+
         controller.Move(move * Time.deltaTime * speed);
 
         if(move != Vector3.zero)
@@ -34,15 +61,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Running", false);
-        }
-
-        if(Input.GetButtonDown("Jump"))
-            Debug.Log("jump button clicked.");
-
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("jump button clicked.");
-            rigidBody.AddForce(new Vector3(0,jumpForce,0), ForceMode.Impulse);
         }
     }
 }
