@@ -15,6 +15,8 @@ namespace CityRun
         public void Start()
         {
             controller = GetComponent<CharacterController>();
+
+            Camera.main.transform.parent = gameObject.transform;
         }
         public void Update()
         {

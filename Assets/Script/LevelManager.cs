@@ -13,9 +13,11 @@ namespace CityRun
         private Vector3 frontPosition;
         private GameObject frontBlock = null;
 
-        public void Start()
+        private void Start()
         {
-            for(int i = 0; i < 3; i++)
+            LoopRoad.PassedArea += () =>LoopSequance();
+
+            for(int i = 0; i < 5; i++)
             {
                 if(frontBlock == null)
                 {
@@ -31,6 +33,19 @@ namespace CityRun
                 
                 blocks.Enqueue(frontBlock);
             }
+        }
+
+        private void LoopSequance()
+        {
+            GameObject block = blocks.Dequeue();
+
+            frontPosition = frontBlock.transform.position;
+            spawnPosition = new Vector3(frontPosition.x, frontPosition.y, frontPosition.z + 24);
+
+            block.transform.position = spawnPosition;
+
+            blocks.Enqueue(block);
+            frontBlock = block;
         }
     }
 }
