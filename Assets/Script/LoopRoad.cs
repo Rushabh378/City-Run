@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent( typeof(BoxCollider))]
-public class LoopRoad : MonoBehaviour
+namespace CityRun
 {
-    private void OnTriggerEnter(Collider other)
+    [RequireComponent(typeof(BoxCollider))]
+    public class LoopRoad : MonoBehaviour
     {
-        if(other.gameObject.GetComponent<PlayerController>() != null)
+        private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("delete last city block and add citybloc on front.");
+            if (other.gameObject.GetComponent<PlayerController>() != null)
+            {
+                Debug.Log("delete last city block and add citybloc on front.");
+            }
         }
     }
 }

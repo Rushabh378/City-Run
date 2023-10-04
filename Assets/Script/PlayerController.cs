@@ -1,53 +1,56 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+namespace CityRun
 {
-    private CharacterController controller;
-    private float yVelocity = 0;
-    [SerializeField] private Animator animator;
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 15f;
-    [SerializeField] private float gravity = 1f;
-
-    public void Start()
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerController : MonoBehaviour
     {
-        controller = GetComponent<CharacterController>();
-    }
-    public void Update()
-    {
-        Move();
-    }
+        private CharacterController controller;
+        private float yVelocity = 0;
+        [SerializeField] private Animator animator;
+        [SerializeField] private float speed = 5f;
+        [SerializeField] private float jumpForce = 15f;
+        [SerializeField] private float gravity = 1f;
 
-    private void Move()
-    {
-       
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-        if (controller.isGrounded)
+        public void Start()
         {
-            if (Input.GetButtonDown("Jump"))
+            controller = GetComponent<CharacterController>();
+        }
+        public void Update()
+        {
+            Move();
+        }
+
+        private void Move()
+        {
+
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            if (controller.isGrounded)
             {
-                yVelocity = jumpForce;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    yVelocity = jumpForce;
+                }
             }
-        }
-        else
-        {
-            yVelocity -= gravity;
-        }
+            else
+            {
+                yVelocity -= gravity;
+            }
 
-        move.y = yVelocity;
+            move.y = yVelocity;
 
-        controller.Move(move * Time.deltaTime * speed);
+            controller.Move(move * Time.deltaTime * speed);
 
 
-        if(move != Vector3.zero)
-        {
-            animator.SetBool("Running", true);
-        }
-        else
-        {
-            animator.SetBool("Running", false);
+            if (move != Vector3.zero)
+            {
+                animator.SetBool("Running", true);
+            }
+            else
+            {
+                animator.SetBool("Running", false);
+            }
         }
     }
 }
