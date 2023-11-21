@@ -6,12 +6,13 @@ namespace CityRun
 {
     public class LevelManager : GenericSingleton<LevelManager>
     {
-        [SerializeField] private GameObject cityBlock;
+        [SerializeField] private List<GameObject> cityBlock;
 
         private Queue<GameObject> blocks = new();
         private Vector3 spawnPosition;
         private Vector3 frontPosition;
         private GameObject frontBlock = null;
+        private System.Random random = new();
 
         private void Start()
         {
@@ -19,16 +20,17 @@ namespace CityRun
 
             for(int i = 0; i < 5; i++)
             {
-                if(frontBlock == null)
+                int index = random.Next(cityBlock.Count);
+                if (frontBlock == null)
                 {
-                    frontBlock = Instantiate(cityBlock, spawnPosition, Quaternion.identity);
+                    frontBlock = Instantiate(cityBlock[index], spawnPosition, Quaternion.identity);
                 }
                 else
                 {
                     frontPosition = frontBlock.transform.position;
                     spawnPosition = new Vector3(frontPosition.x, frontPosition.y, frontPosition.z + 24);
 
-                    frontBlock = Instantiate(cityBlock, spawnPosition, Quaternion.identity);
+                    frontBlock = Instantiate(cityBlock[index], spawnPosition, Quaternion.identity);
                 }
                 
                 blocks.Enqueue(frontBlock);

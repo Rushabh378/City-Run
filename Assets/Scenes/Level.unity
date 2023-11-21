@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66b846bbbe73be49acad0bb4cb60f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6979324536747188241, guid: 1eba2f7a2bfe31846b8fad8db7918313, type: 3}
+  player: {fileID: 114266866127089344, guid: d51ab6258e8360f4e92117bc3cffc589, type: 3}
   startArea: {fileID: 1142062517}
 --- !u!4 &734802430
 Transform:
@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 734802428}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: -9}
+  m_LocalPosition: {x: 0, y: 4.889, z: -10.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 1142062517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 5}
+  m_LocalPosition: {x: 0, y: 5.1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -328,6 +328,22 @@ PrefabInstance:
       propertyPath: cityBlock
       value: 
       objectReference: {fileID: 7766766115414912018, guid: 7fffad3d75a443d44ae7829637dd1060, type: 3}
+    - target: {fileID: 748510148283118715, guid: d7a052c77c27d0c4a9fc5634d4de362a, type: 3}
+      propertyPath: cityBlock.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 748510148283118715, guid: d7a052c77c27d0c4a9fc5634d4de362a, type: 3}
+      propertyPath: cityBlock.Array.data[0]
+      value: 
+      objectReference: {fileID: 8378247423312155671, guid: 81a26c15c6e76c44aac3562572f39e3b, type: 3}
+    - target: {fileID: 748510148283118715, guid: d7a052c77c27d0c4a9fc5634d4de362a, type: 3}
+      propertyPath: cityBlock.Array.data[1]
+      value: 
+      objectReference: {fileID: 4221901662162573465, guid: 12225fdd96c6a2944a39dc0a1744f42e, type: 3}
+    - target: {fileID: 748510148283118715, guid: d7a052c77c27d0c4a9fc5634d4de362a, type: 3}
+      propertyPath: cityBlock.Array.data[2]
+      value: 
+      objectReference: {fileID: 2814645230395736753, guid: 48fe08a16d0e0284d85dfbbb83f2be64, type: 3}
     - target: {fileID: 7341261487328555446, guid: d7a052c77c27d0c4a9fc5634d4de362a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0706568
@@ -462,13 +478,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733764262}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06320983, y: -0, z: -0, w: 0.9980003}
-  m_LocalPosition: {x: 0, y: 2.92, z: 0}
+  m_LocalRotation: {x: 0.1552608, y: -0, z: -0, w: 0.9878735}
+  m_LocalPosition: {x: -0.14, y: 8.79, z: -21.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 7.248, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.864, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
