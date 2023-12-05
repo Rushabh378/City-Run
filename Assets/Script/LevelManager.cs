@@ -1,16 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CityRun
 {
-    public class LevelManager : GenericSingleton<LevelManager>
+    public class LevelManager : MonoBehaviour
     {
         [SerializeField] private List<GameObject> cityBlock;
 
         private Queue<GameObject> blocks = new();
         private Vector3 spawnPosition;
-        private Vector3 frontPosition;
         private GameObject frontBlock = null;
         private System.Random random = new();
 
@@ -27,8 +25,7 @@ namespace CityRun
                 }
                 else
                 {
-                    frontPosition = frontBlock.transform.position;
-                    spawnPosition = new Vector3(frontPosition.x, frontPosition.y, frontPosition.z + 24);
+                    spawnPosition = Vector3.forward * (frontBlock.transform.position.z + 24);
 
                     frontBlock = Instantiate(cityBlock[index], spawnPosition, Quaternion.identity);
                 }
@@ -41,13 +38,12 @@ namespace CityRun
         {
             GameObject block = blocks.Dequeue();
 
-            frontPosition = frontBlock.transform.position;
-            spawnPosition = new Vector3(frontPosition.x, frontPosition.y, frontPosition.z + 24);
+            spawnPosition = Vector3.forward * (frontBlock.transform.position.z + 24);
 
             block.transform.position = spawnPosition;
 
-            blocks.Enqueue(block);
             frontBlock = block;
+            blocks.Enqueue(frontBlock);
         }
     }
 }

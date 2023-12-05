@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CityRun
@@ -11,7 +9,7 @@ namespace CityRun
 
         private void Start()
         {
-            Instantiate<PlayerController>(player, startArea.transform.position, Quaternion.identity);
+            Instantiate<PlayerController>(player, transform.position, Quaternion.identity);
         }
     }
 }

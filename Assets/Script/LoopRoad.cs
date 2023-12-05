@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -14,7 +12,6 @@ namespace CityRun
             if (other.gameObject.GetComponent<PlayerController>() != null)
             {
                 PassedArea?.Invoke();
-                Debug.Log("delete last city block and add citybloc on front.");
             }
         }
     }
