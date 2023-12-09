@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7505753269266367265, guid: 7fffad3d75a443d44ae7829637dd1060, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7766766115414912018, guid: 7fffad3d75a443d44ae7829637dd1060, type: 3}
       propertyPath: m_Name
       value: CityBlock (3) Variant

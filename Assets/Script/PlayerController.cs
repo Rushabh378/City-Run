@@ -31,9 +31,21 @@ namespace CityRun
 
             transform.Translate(movement * speed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump") && GroundChecker.isGrounded == true)
+            if (Input.GetButtonDown("Jump")) //&& GroundChecker.isGrounded == true)
             {
                 RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            Debug.Log("velocity : " + RB.velocity);
+
+            if (RB.velocity != Vector3.zero)
+            {
+                animator.SetBool("Running", true);
+                Debug.Log("velocity is not zero");
+            }
+            else
+            {
+                animator.SetBool("Running", false);
+                Debug.Log("velocity is zero");
             }
         }
 
