@@ -8,13 +8,17 @@ namespace CityRun
 
         private void OnTriggerEnter(Collider other)
         {
-            isGrounded = true;
-            Debug.Log("on ground");
+            if (other.CompareTag("Ground"))
+            {
+                isGrounded = true;
+            }
         }
         private void OnTriggerExit(Collider other)
         {
-            isGrounded = false;
-            Debug.Log("on air");
+            if (other.CompareTag("Ground"))
+            {
+                isGrounded = false;
+            }
         }
     }
 }

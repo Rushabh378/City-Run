@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum Position
-{
-    Left,
-    Center,
-    Right
-}
-
 namespace CityRun
 {
     [RequireComponent(typeof(Rigidbody))]
@@ -18,6 +11,7 @@ namespace CityRun
         [SerializeField] private Animator animator;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float jumpForce = 25f;
+        [SerializeField] private GroundChecker groundChecker;
 
         private void Start()
         {
@@ -31,21 +25,18 @@ namespace CityRun
 
             transform.Translate(movement * speed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump")) //&& GroundChecker.isGrounded == true)
+            if (Input.GetButtonDown("Jump") && groundChecker.isGrounded)
             {
                 RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
-            Debug.Log("velocity : " + RB.velocity);
 
-            if (RB.velocity != Vector3.zero)
+            if (movement != Vector3.zero)
             {
                 animator.SetBool("Running", true);
-                Debug.Log("velocity is not zero");
             }
             else
             {
                 animator.SetBool("Running", false);
-                Debug.Log("velocity is zero");
             }
         }
 
