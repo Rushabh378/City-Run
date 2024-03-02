@@ -11,7 +11,8 @@ namespace CityRun
         [SerializeField] private Animator animator;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float jumpForce = 25f;
-        [SerializeField] private GroundChecker groundChecker;
+
+        bool isGrounded;
 
         private void Start()
         {
@@ -25,7 +26,7 @@ namespace CityRun
 
             transform.Translate(movement * speed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump") && groundChecker.isGrounded)
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
@@ -37,6 +38,19 @@ namespace CityRun
             else
             {
                 animator.SetBool("Running", false);
+            }
+        }
+
+        public void FixedUpdate()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1f))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
             }
         }
 

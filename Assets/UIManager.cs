@@ -38,9 +38,9 @@ namespace CityRun
         }
         public void QuitGame()
         {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        #endif
             Application.Quit();
         }
     }
